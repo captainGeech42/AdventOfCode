@@ -7,12 +7,28 @@ def get_freq(fp):
         return [int(x.strip()) for x in f.readlines()]
 
 
-def main(argv):
+def part1(argv):
     sum = 0
     for x in get_freq("input"):
         sum += x
     print(sum)
 
 
+def part2(argv):
+    sums = []
+    sum = 0
+    repeat = True
+    while repeat:
+        for x in get_freq("input"):
+            sum += x
+            if sum not in sums:
+                sums.append(sum)
+            else:
+                print(sum)
+                repeat = False
+                break
+
+
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    # sys.exit(part1(sys.argv))
+    sys.exit(part2(sys.argv))
