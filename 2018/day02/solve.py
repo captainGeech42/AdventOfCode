@@ -35,5 +35,37 @@ def part1(argv):
     print(two * three)
 
 
+def part2(argv):
+    ids = get_id("input")
+    good = []
+    for x in ids:
+        for y in ids:
+            if x == y:
+                continue
+            wrong = False
+            broke = False
+            for i in range(len(x)):
+                if x[i] != y[i] and wrong:
+                    broke = True
+                    break
+                elif x[i] != y[i] and not wrong:
+                    wrong = True
+            if not broke:
+                # we have the two IDs that are only off by one
+                good.append(x)
+                good.append(y)
+                break
+        if not broke:
+            break
+    
+    id = ""
+    for i in range(len(good[0])):
+        if good[0][i] == good[1][i]:
+            id += good[0][i]
+    
+    print(id)
+
+
 if __name__ == "__main__":
-    sys.exit(part1(sys.argv))
+    # sys.exit(part1(sys.argv))
+    sys.exit(part2(sys.argv))
