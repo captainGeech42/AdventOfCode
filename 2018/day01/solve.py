@@ -18,8 +18,9 @@ def part2(argv):
     sums = []
     sum = 0
     repeat = True
+    freqs = get_freq("input")
     while repeat:
-        for x in get_freq("input"):
+        for x in freqs:
             sum += x
             if sum not in sums:
                 sums.append(sum)
